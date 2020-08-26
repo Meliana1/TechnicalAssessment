@@ -1,0 +1,178 @@
+(code no 1- 4 is also provided in the zip files)
+
+1. public class Q1 {
+    
+    public static void findJumpingWays(int N){
+        int [] num = new int[100];
+        num[0]= 1;
+        num[1] = 1;
+        num [2] = 2;
+            for(int i=3; i<=N;i++){
+                num[i] = num[i-1] + num [i-2];
+            }
+            System.out.println(num[N]);
+    }
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+        System.out.println("number of rock: ");
+        int number = input.nextInt();
+        
+        findJumpingWays(number);
+    }
+    
+}
+
+
+2. public class Q2 {
+    public static void main(String[] args) {
+        String x = "aaaaanaapaaa";
+            int[] num = new int[10];
+            int count =0;
+        for(int i = 0; i<x.length()-2;i++){
+            if(x.charAt(i)== x.charAt(i+1) && x.charAt(i)== x.charAt(i+2)){
+               num[count]= i;
+              count++;
+            }
+        }
+        for(int j = 0; j<= count;j++){
+        System.out.print(num[j]+", ");
+        }
+    }
+}
+
+
+3. public class Q3 {
+     public static void main(String[] args) {
+        String[] words = {"zero", "real", "name", "zero", "help", "hero", "real", "none", "real"};
+        findWordWithfrequency (3,words);
+    }
+    
+    public static void findWordWithfrequency (int N, String[] wordList){
+        for (int i=0; i<N; i++) {
+            System.out.print (wordList [i]+ " , ");
+        }
+    }  
+    
+}
+
+4. 
+Issue:
+– There is no object identifier class in the code for object specification
+- There is ; in all methods of the abstract class which can show error.
+
+Answer:
+- Delete ; in every method in abstract class and add {}.
+- there is a new class needed for the object creation for fish and bird objects
+
+Ex: 
+
+ abstract class Animal {
+     public void fly(){
+     
+    }
+    public void walk(){
+    
+    }
+    public void swim(){
+    
+    }
+}
+
+class Bird extends Animal {
+    public void fly() {
+        System.out.println("Flying");
+    }
+    public void walk() {
+        System.out.println("Walking");
+    }
+    public void swim() {
+        try {
+            throw new Exception("Not supported");
+        } catch (Exception ex) {
+            Logger.getLogger(Bird.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+}
+
+class Fish extends Animal {
+    public void swim() {
+        System.out.println("Swimming");
+    }
+    
+    public void walk() {
+        try {
+            throw new Exception("Not supported");
+        } catch (Exception ex) {
+            Logger.getLogger(Fish.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void fly() {
+        try {
+            throw new Exception("Not supported");
+        } catch (Exception ex) {
+            Logger.getLogger(Fish.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+}
+
+public class Q4 {
+    public static void main(String[] args) {
+        Fish fish = new Fish();
+    fish.swim(); // works
+    fish.walk(); // exception
+    fish.fly(); // exception
+    
+    Bird bird = new Bird();
+    bird.fly(); // works
+    bird.swim(); //exception
+    }
+}
+
+5. There are 2 ways to prove. It is either through divide the numbers until the value either 0 or 1, and through logarithm. 
+For instance:
+- The input number is 10. log2 (10) and 10/2 = 5 does not end with neither the exact number nor value of 0 or 1.
+- If the input number is 32. log2 (32) = 5 and 32/2 = 16, 16/2 = 8, 8/2 = 4, 4/2= 2, 2/2 = 1. Therefore, input number is number of power of 2 
+
+
+6. Yes, when the fork() is called, the all of copy process in parent go to the child, although it goes to separate memory location in child.
+
+7.No, it is not correct. In multi threading, thread within the process share the same memory and open files. 
+Therefore, each thread can’t  be protected from other thread in terms of the memory protection. 
+
+8. No, the virtual address size and physical is different. 
+Address translation hardware in the CPU, often referred to as a memory management unit (MMU), automatically translates virtual addresses to physical addresses. 
+Software within the operating system may extend these capabilities to provide a virtual address space that can exceed the capacity of real memory 
+and thus reference more memory than is physically present in the computer.
+
+9. overloading method is the compile time concept. It has method which has the same method but different parameter in one class
+As for overidding is the run time concept method which has the same method name,parameter and return type. This can occur in parent and child class.
+Moreover, polimorphism can apply with overriding.
+
+For example:
+
+-	Overriding
+Class Plant{
+public void color(){
+System.out.println(“green”);
+}
+}
+
+Class rose extends Plant{
+public void color(){
+System.out.println(red);
+}
+}
+
+-	Overloading:
+
+Class Allowance{
+Public void allowance(){
+System.out.println(“RM 10 per day”);
+}
+
+Public void allowance(int days){
+Int money = 10 * days;
+System,out.println(money);
+}
